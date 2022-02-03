@@ -5,11 +5,13 @@ import { UserRole } from './user_role.entity';
 export enum RoleKey {
   ADMIN = 'admin',
   USER = 'user',
+  PROJECT_LEAD = 'project_lead',
+  PROJECT_MEMBER = 'project_member',
 }
 
 @Entity()
 export class Role {
-  static ROLES = [RoleKey.ADMIN, RoleKey.USER];
+  static ROLES = [RoleKey.ADMIN, RoleKey.USER, RoleKey.PROJECT_LEAD, RoleKey.PROJECT_MEMBER];
 
   @PrimaryGeneratedColumn()
   id: number;
