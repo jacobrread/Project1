@@ -1,24 +1,18 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class Project1643904163026 implements MigrationInterface {
+export class userProjects1643940387616 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'project',
+        name: 'userProjects',
         columns: [
           {
-            name: 'id',
-            type: 'int',
-            isPrimary: true,
-            isGenerated: true,
-          },
-          {
-            name: 'leaderId',
+            name: 'userId',
             type: 'int',
             isNullable: false,
           },
           {
-            name: 'memberId',
+            name: 'projectId',
             type: 'int',
             isNullable: false,
           },
