@@ -7,7 +7,7 @@ export class Task1643940358630 implements MigrationInterface {
         name: 'task',
         columns: [
           {
-            name: 'id',
+            name: 'taskId',
             type: 'int',
             isPrimary: true,
             isGenerated: true,
@@ -20,25 +20,22 @@ export class Task1643940358630 implements MigrationInterface {
           {
             name: 'description',
             type: 'text',
-            isNullable: false,
           },
           {
             name: 'timeEstimate',
-            type: 'text',
-            isNullable: false,
+            type: 'int',
           },
           {
             name: 'status',
-            type: 'text',
+            type: 'bool',
             isNullable: false,
           },
           {
-            name: 'assignedUsers',
+            name: 'assignedUser',
             type: 'int',
-            isNullable: false,
           },
           {
-            name: 'projectId',
+            name: 'parentProjectId',
             type: 'int',
             isNullable: false,
           },
@@ -47,5 +44,7 @@ export class Task1643940358630 implements MigrationInterface {
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('task');
+  }
 }

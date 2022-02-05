@@ -7,25 +7,27 @@ export default class Project1643904163026 implements MigrationInterface {
         name: 'project',
         columns: [
           {
-            name: 'id',
+            name: 'projectId',
             type: 'int',
             isPrimary: true,
             isGenerated: true,
           },
           {
-            name: 'leaderId',
+            name: 'projectLeadId',
             type: 'int',
             isNullable: false,
           },
-          {
-            name: 'memberId',
-            type: 'int',
-            isNullable: false,
-          },
+          // {
+          //   name: 'memberId',
+          //   type: 'int',
+          //   isNullable: false,
+          // },
         ],
       }),
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('project');
+  }
 }
