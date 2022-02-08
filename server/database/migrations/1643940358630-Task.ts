@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from 'typeorm';
 
 export class Task1643940358630 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -40,6 +40,15 @@ export class Task1643940358630 implements MigrationInterface {
             isNullable: false,
           },
         ],
+      }),
+    );
+    await queryRunner.createForeignKey(
+      'task',
+      new TableForeignKey({
+        columnNames: ['parentProjectId'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'project',
+        onDelete: 'CASCADE',
       }),
     );
   }

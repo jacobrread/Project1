@@ -4,7 +4,7 @@ import { Project } from './project.entity';
 @Entity()
 export class Task {
   @PrimaryGeneratedColumn()
-  taskId: number;
+  id: number;
 
   @Column()
   title: string;

@@ -6,7 +6,7 @@ import { userProject } from './userProject.entity';
 @Entity()
 export class Project {
   @PrimaryGeneratedColumn()
-  projectId: number;
+  id: number;
 
   @Column()
   projectLead: number;
