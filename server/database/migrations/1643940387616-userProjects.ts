@@ -7,9 +7,14 @@ export class userProjects1643940387616 implements MigrationInterface {
         name: 'userProjects',
         columns: [
           {
-            name: 'userId',
+            name: 'id',
             type: 'int',
             isPrimary: true,
+            isNullable: false,
+          },
+          {
+            name: 'userId',
+            type: 'int',
             isNullable: false,
           },
           {

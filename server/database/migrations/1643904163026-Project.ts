@@ -7,7 +7,7 @@ export default class Project1643904163026 implements MigrationInterface {
         name: 'project',
         columns: [
           {
-            name: 'projectId',
+            name: 'id',
             type: 'int',
             isPrimary: true,
             isGenerated: true,

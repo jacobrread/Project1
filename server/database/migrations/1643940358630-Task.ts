@@ -7,7 +7,7 @@ export class Task1643940358630 implements MigrationInterface {
         name: 'task',
         columns: [
           {
-            name: 'taskId',
+            name: 'id',
             type: 'int',
             isPrimary: true,
             isGenerated: true,
