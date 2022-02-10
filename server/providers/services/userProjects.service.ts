@@ -10,15 +10,15 @@ export class userProjectsService {
     private userProjectRepository: Repository<userProject>,
   ) {}
 
-  findAllUsers(userId: number): Promise<userProject[]> {
+  findAllUsers(projectId: number): Promise<userProject[]> {
     return this.userProjectRepository.find({
-      where: { userId },
+      where: { projectId },
     });
   }
 
-  findAllProjects(projectId: number): Promise<userProject[]> {
+  findAllProjects(userId: number): Promise<userProject[]> {
     return this.userProjectRepository.find({
-      where: { projectId },
+      where: { userId },
     });
   }
 

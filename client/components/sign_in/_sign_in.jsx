@@ -4,7 +4,7 @@ import { AuthContext } from '../../utils/auth_context';
 import { Paper } from '../common/paper';
 import { Input } from '../common/input';
 import { Button } from '../common/button';
-import { useEffect } from 'react/cjs/react.production.min';
+// import { useEffect } from 'react/cjs/react.production.min';
 
 export const SignIn = () => {
   const [, setAuthToken] = useContext(AuthContext);

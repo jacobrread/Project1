@@ -23,4 +23,9 @@ export class TasksService {
   findTaskById(id: number) {
     return this.taskRepository.findOne(id);
   }
+
+  updateBool(id: number) {
+    const task = this.taskRepository.findOne(id);
+    // task.status = !status;
+  }
 }

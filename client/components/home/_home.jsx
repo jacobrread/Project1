@@ -32,16 +32,28 @@ export const Home = () => {
   }
 
   return (
-    <div className="p-4">
-      <h1>Welcome {user.firstName}</h1>
-      <Button type="button" onClick={logout}>
-        Logout
-      </Button>
-      {roles.includes('admin') && (
-        <Button type="button" onClick={() => navigate('/admin')}>
-          Admin
+    <>
+      <div className="p-4">
+        <h1>Welcome {user.firstName}</h1>
+        <Button type="button" onClick={logout}>
+          Logout
         </Button>
-      )}
-    </div>
+        <Button type="button">Create Project</Button>
+        {roles.includes('admin') && (
+          <Button type="button" onClick={() => navigate('/admin')}>
+            Admin
+          </Button>
+        )}
+      </div>
+
+      <div>
+        <h2>Your Projects</h2>
+        {roles.includes('admin') && <p>Projects you created go here</p>}
+      </div>
+
+      <div>
+        <h2>Other Projects</h2>
+      </div>
+    </>
   );
 };

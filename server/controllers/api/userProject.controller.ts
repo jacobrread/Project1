@@ -15,21 +15,21 @@ export class userProjectsController {
   /**
    * Is this right?
    */
-  @Get('/userProjects?projects') // finds all users that belong to a project
+  @Get('/userProjects?projects') // finds all projects
   public async index(@JwtBody() jwtBody: JwtBodyDto) {
-    const userProjects = await this.user_projectsService.findAllProjects(jwtBody.userId);
+    const projects = await this.user_projectsService.findAllProjects(jwtBody.userId);
     jwtBody.userId;
-    return { userProjects };
+    return { projects };
   }
 
   /**
    * Is this Right?
    */
   @Get('/userProjects?users') // finds all users that belong to a project
-  public async index2(@JwtBody() jwtBody: JwtBodyDto) {
-    const userProjects = await this.user_projectsService.findAllUsers(jwtBody.userId);
-    jwtBody.userId;
-    return { userProjects };
+  public async index2(@JwtBody() jwtBody: JwtBodyDto, @Body() body: userProjectPostBody) {
+    const users = await this.user_projectsService.findAllUsers(body.projectId);
+    // jwtBody.userId;
+    return { users };
   }
 
   @Post('/userProjects/new') // adds new relation between userID and ProjectId

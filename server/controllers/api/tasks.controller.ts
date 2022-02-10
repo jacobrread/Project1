@@ -51,5 +51,8 @@ export class TasksController {
    * TODO
    */
   @Post('/tasks/update') // update the state of the task
-  public async update() {}
+  public async update(@Param('id') id: string) {
+    const task = this.getSpecifiedTask(id);
+    (await task).task.status = !(await task).task.status;
+  }
 }
