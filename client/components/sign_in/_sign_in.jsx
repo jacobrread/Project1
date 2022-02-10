@@ -4,17 +4,12 @@ import { AuthContext } from '../../utils/auth_context';
 import { Paper } from '../common/paper';
 import { Input } from '../common/input';
 import { Button } from '../common/button';
-// import { useEffect } from 'react/cjs/react.production.min';
 
 export const SignIn = () => {
   const [, setAuthToken] = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  // put the code to auto select the 'email' field here
-  // }, []);
 
   const goToSignUp = () => {
     navigate('/signup');
