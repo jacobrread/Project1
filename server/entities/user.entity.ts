@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { RefreshToken } from './refresh_token.entity';
 import { UserRole } from './user_role.entity';
 import { Project } from './project.entity';
-import { userProject } from './userProject.entity';
+import { UserProject } from './userProject.entity';
 
 @Entity()
 export class User {
@@ -30,6 +30,6 @@ export class User {
   @OneToMany(() => Project, (project) => project.user)
   projects: Project[];
 
-  @OneToMany(() => userProject, (userProject) => userProject.user)
-  userProjects: userProject[];
+  @OneToMany(() => UserProject, (userProject) => userProject.user)
+  userProjects: UserProject[];
 }

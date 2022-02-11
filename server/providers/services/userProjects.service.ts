@@ -1,29 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { userProject } from 'server/entities/userProject.entity';
+import { UserProject } from 'server/entities/userProject.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class userProjectsService {
   constructor(
-    @InjectRepository(userProject)
-    private userProjectRepository: Repository<userProject>,
+    @InjectRepository(UserProject)
+    private userProjectRepository: Repository<UserProject>,
   ) {}
 
-  findAllUsers(projectId: number): Promise<userProject[]> {
+  findAllUsers(projectId: number): Promise<UserProject[]> {
     return this.userProjectRepository.find({
       where: { projectId },
     });
   }
 
-  findAllProjects(userId: number): Promise<userProject[]> {
+  findAllProjects(userId: number): Promise<UserProject[]> {
     return this.userProjectRepository.find({
       where: { userId },
     });
-  }
-
-  createRelation(userproject: userProject): Promise<userProject> {
-    return this.userProjectRepository.save(userproject);
   }
 
   /**

@@ -20,12 +20,12 @@ export class TasksService {
     return this.taskRepository.save(task);
   }
 
-  findTaskById(id: number) {
+  findTaskById(id: number): Promise<Task> {
     return this.taskRepository.findOne(id);
   }
 
-  updateBool(id: number) {
-    const task = this.taskRepository.findOne(id);
-    // task.status = !status;
+  async updateBool(id: number) {
+    const task = await this.taskRepository.findOne(id);
+    task.status = !task.status;
   }
 }

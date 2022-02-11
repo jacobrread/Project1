@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Task } from './task.entity';
 import { User } from './user.entity';
-import { userProject } from './userProject.entity';
+import { UserProject } from './userProject.entity';
 
 @Entity()
 export class Project {
@@ -17,6 +17,6 @@ export class Project {
   @OneToMany(() => Task, (task) => task.project)
   tasks: Task[];
 
-  @OneToMany(() => userProject, (userProject) => userProject.project)
-  userProjects: userProject[];
+  @OneToMany(() => UserProject, (userProject) => userProject.project)
+  userProjects: UserProject[];
 }
