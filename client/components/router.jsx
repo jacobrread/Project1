@@ -10,14 +10,21 @@ export const Router = () => {
   const [authToken] = useContext(AuthContext);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={authToken ? <Home /> : <Navigate replace to="signin" />} // no token means not logged in
-      />
-      <Route path="admin" element={<Admin />} />
-      <Route path="signin" element={<SignIn />} />
-      <Route path="signup" element={<SignUp />} />
-    </Routes>
+    <>
+      <div className="p-4 bg-black text-white">
+        <Routes>
+          <Route path="admin" element={'hello from the admin page'} />
+        </Routes>
+      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={authToken ? <Home /> : <Navigate replace to="signin" />} // no token means not logged in
+        />
+        <Route path="admin" element={<Admin />} />
+        <Route path="signin" element={<SignIn />} />
+        <Route path="signup" element={<SignUp />} />
+      </Routes>
+    </>
   );
 };

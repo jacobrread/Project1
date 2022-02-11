@@ -39,6 +39,8 @@ export const Home = () => {
           Logout
         </Button>
         <Button type="button">Create Project</Button>
+        {/* or you could do it this way???
+        <Link to="createproject">Create Project</Link> */}
         {roles.includes('admin') && (
           <Button type="button" onClick={() => navigate('/admin')}>
             Admin
