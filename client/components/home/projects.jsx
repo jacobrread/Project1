@@ -1,11 +1,17 @@
 import { Project } from './project';
+import { Button } from '../common/button';
+import { useNavigate } from 'react-router';
 
 export const Projects = ({ projects }) => {
+  const navigate = useNavigate();
+  const routeChange = () => {
+    navigate('/createproject');
+  };
+
   return (
     <>
       <div>
-        <h2>Create New Project</h2>
-        <Button>Click to create new project</Button>
+        <Button onClick={routeChange}>Click to create new project</Button>
       </div>
       <div className="flex-1">
         {projects.map((project) => (

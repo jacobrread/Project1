@@ -45,9 +45,9 @@ export const CreateTask = () => {
         <div>Enter Task Name</div>
         <Input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
         <div>Enter Description</div>
-        <Input type="text" value={description} onChange={(e) => setTitle(e.target.value)} />
+        <Input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
         <div>Enter Time Estimate</div>
-        <Input type="text" value={timeEstimate} onChange={(e) => setTitle(e.target.value)} />
+        <Input type="text" value={timeEstimate} onChange={(e) => setTimeEstimate(e.target.value)} />
         <div className="flex flex-row justify-end mt-2">
           <Button type="button" onClick={signUp}>
             Create Task

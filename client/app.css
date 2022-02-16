@@ -3,3 +3,25 @@
 @tailwind components;
 
 @tailwind utilities;
+
+div {
+  margin: 10;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* bottom: 0; */
+  padding: 2px;
+  background: lightblue;
+}
+
+.project {
+  background: lightseagreen;
+}
+
+.spacer {
+  padding: 40px;
+}

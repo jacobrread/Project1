@@ -37,23 +37,55 @@ export const Home = () => {
 
   return (
     <>
-      <div className="p-4">
-        <h1>Welcome {user.firstName}</h1>
-        <Button type="button" onClick={logout}>
-          Logout
-        </Button>
-        {roles.includes('admin') && (
-          <Button type="button" onClick={() => navigate('/admin')}>
-            Admin
+      <div className="top-bar">
+        <div className="p-4">
+          <h1>Welcome {user.firstName}</h1>
+          <Button type="button" onClick={logout}>
+            Logout
           </Button>
-        )}
+          {roles.includes('admin') && (
+            <Button type="button" onClick={() => navigate('/admin')}>
+              Admin
+            </Button>
+          )}
+        </div>
       </div>
 
-      <div classname="rounded flex bg-gray-400 text-white">
-        <Projects projects={{ projects }} />
+      <div className="spacer"></div>
+      <div classname="rounded project">
+        <h1>Here are a list of your projects:</h1>
+        <Projects projects={projects} />
       </div>
 
-      <h1 className="rounded flex bg-gray-400 text-white">If you see this text then my front end edits are working</h1>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
     </>
   );
 };
