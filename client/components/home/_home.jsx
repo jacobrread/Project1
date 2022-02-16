@@ -22,6 +22,7 @@ export const Home = () => {
     setLoading(false);
 
     const { projects } = await api.get('/projects');
+    setProjects(projects);
   }, []);
 
   const logout = async () => {

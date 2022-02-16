@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, JoinColumn } from 'typeorm';
 import { Task } from './task.entity';
 import { User } from './user.entity';
 import { UserProject } from './userProject.entity';
@@ -7,11 +7,12 @@ import { UserProject } from './userProject.entity';
 export class Project {
   @PrimaryGeneratedColumn()
   id: number;
-
+  
   @Column()
-  projectLead: number;
+  projectLeadId: number;
 
   @ManyToOne(() => User, (user) => user.projects)
+  @JoinColumn({name : 'projectLeadId'})
   user: User;
 
   @OneToMany(() => Task, (task) => task.project)
@@ -19,4 +20,7 @@ export class Project {
 
   @OneToMany(() => UserProject, (userProject) => userProject.project)
   userProjects: UserProject[];
+
+  @Column()
+  name:string;
 }

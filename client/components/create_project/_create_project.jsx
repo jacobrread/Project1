@@ -19,10 +19,9 @@ export const CreateProject = () => {
       return;
     }
 
-    const { token } = await api.post('/projects', {
+      await api.post('/projects', {
       name,
     });
-    setAuthToken(token);
     navigate('/');
   };
 

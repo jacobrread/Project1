@@ -7,7 +7,7 @@ import { ProjectsService } from 'server/providers/services/projects.service';
 import { UsersService } from 'server/providers/services/users.service';
 
 class ProjectPostBody {
-  projectLead: number;
+  name:string;
 }
 
 @Controller()
@@ -39,8 +39,9 @@ export class ProjectsController {
   @Post('/projects') // create new projects
   public async create(@JwtBody() jwtBody: JwtBodyDto, @Body() body: ProjectPostBody) {
     let project = new Project();
+    project.name = body.name;
     const userProject = new UserProject();
-    project.projectLead = body.projectLead;
+    project.projectLeadId = jwtBody.userId;
     project = await this.projectsService.createProject(project);
     userProject.projectId = project.id;
     userProject.userId = jwtBody.userId;
