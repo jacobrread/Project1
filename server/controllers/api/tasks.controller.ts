@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, Param, Post, Put } from '@nestjs/common';
 import { JwtBody } from 'server/decorators/jwt_body.decorator';
 import { JwtBodyDto } from 'server/dto/jwt_body.dto';
 import { Task } from 'server/entities/task.entity';
 import { TasksService } from 'server/providers/services/tasks.service';
+import { userProjectsService } from 'server/providers/services/userProjects.service';
 
 class TaskPostBody {
   title: string;
@@ -15,7 +16,7 @@ class TaskPostBody {
 
 @Controller()
 export class TasksController {
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService, private userprojectsService: userProjectsService) {}
 
   @Get('/tasks/') // lists all tasks
   public async index(@JwtBody() jwtBody: JwtBodyDto) {
@@ -32,27 +33,31 @@ export class TasksController {
 
   @Post('/tasks') // create new tasks
   public async create(@JwtBody() jwtBody: JwtBodyDto, @Body() body: TaskPostBody) {
-    // TODO: check to see if the current user is part of this project before creating
-    if (jwtBody.userId) {
+    const projects = await this.userprojectsService.findAllProjects(jwtBody.userId);
+
+    // check to see if the current user is part of the current project
+    if (body.parentProjectId in projects) {
+      let task = new Task();
+      task.title = body.title;
+      task.description = body.description;
+      task.timeEstimate = body.timeEstimate;
+      task.status = body.status;
+      task.assignedUser = body.assignedUser;
+      task.parentProjectId = body.parentProjectId;
+      task = await this.tasksService.createProject(task);
+      return { task };
     }
-    let task = new Task();
-    task.title = body.title;
-    task.description = body.description;
-    task.timeEstimate = body.timeEstimate;
-    task.status = body.status;
-    task.assignedUser = body.assignedUser;
-    task.parentProjectId = body.parentProjectId;
-    task = await this.tasksService.createProject(task);
-    return { task };
+    throw new HttpException('Unauthorized', 401);
   }
 
-  /**
-   * TODO
-   */
   @Put('/tasks/:id') // update the state of the task
-  // TODO: check to make sure the user is part of this task before doing anything else
-  public async update(@Param('id') id: string) {
+  public async update(@Param('id') id: string, @Body() body: TaskPostBody, @JwtBody() jwtBody: JwtBodyDto) {
     const task = await this.tasksService.findTaskById(parseInt(id, 10));
-    task.status = !task.status;
+    const projects = await this.userprojectsService.findAllProjects(jwtBody.userId);
+
+    // check to make sure the user is part of the current project
+    if (body.parentProjectId in projects) {
+      task.status = !task.status;
+    }
   }
 }

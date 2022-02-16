@@ -1,16 +1,43 @@
-export const CreateProject = () => {};
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { AuthContext } from '../../utils/auth_context';
+import { ApiContext } from '../../utils/api_context';
+import { Paper } from '../common/paper';
+import { Input } from '../common/input';
+import { Button } from '../common/button';
 
-return (
-  <>
-    <header>
-      <h2> To create a new project fill out the information below</h2>
-    </header>
-    <div classname="flex">
-      <p>
-        Enter task name
-        <input type="text" id="title" name="Enter project name" />
-      </p>
-      <input type="submit" value="create project" />
-    </div>
-  </>
-);
+export const CreateProject = () => {
+  const [name, setName] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [, setAuthToken] = useContext(AuthContext);
+  const api = useContext(ApiContext);
+  const navigate = useNavigate();
+
+  const signUp = async () => {
+    if (name === '') {
+      setErrorMessage('Name cannot be blank');
+      return;
+    }
+
+    const { token } = await api.post('/projects', {
+      name,
+    });
+    setAuthToken(token);
+    navigate('/');
+  };
+
+  return (
+    <>
+      <Paper>
+        <div>Enter Project Name</div>
+        <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <div className="flex flex-row justify-end mt-2">
+          <Button type="button" onClick={signUp}>
+            Create Project
+          </Button>
+        </div>
+        <div className="flex">{errorMessage}</div>
+      </Paper>
+    </>
+  );
+};

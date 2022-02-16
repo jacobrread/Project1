@@ -4,11 +4,13 @@ import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
 import { Button } from '../common/button';
+import { Projects } from './projects';
 
 export const Home = () => {
   const [, setAuthToken] = useContext(AuthContext);
   const api = useContext(ApiContext);
   const roles = useContext(RolesContext);
+  const [projects, setProjects] = useState([]);
 
   const navigate = useNavigate();
 
@@ -18,6 +20,8 @@ export const Home = () => {
     const res = await api.get('/users/me');
     setUser(res.user);
     setLoading(false);
+
+    const { projects } = await api.get('/projects');
   }, []);
 
   const logout = async () => {
@@ -38,9 +42,6 @@ export const Home = () => {
         <Button type="button" onClick={logout}>
           Logout
         </Button>
-        <Button type="button">Create Project</Button>
-        {/* or you could do it this way???
-        <Link to="createproject">Create Project</Link> */}
         {roles.includes('admin') && (
           <Button type="button" onClick={() => navigate('/admin')}>
             Admin
@@ -48,14 +49,11 @@ export const Home = () => {
         )}
       </div>
 
-      <div>
-        <h2>Your Projects</h2>
-        {roles.includes('admin') && <p>Projects you created go here</p>}
+      <div classname="rounded flex bg-gray-400 text-white">
+        <Projects projects={{ projects }} />
       </div>
 
-      <div>
-        <h2>Other Projects</h2>
-      </div>
+      <h1 className="rounded flex bg-gray-400 text-white">If you see this text then my front end edits are working</h1>
     </>
   );
 };

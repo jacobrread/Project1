@@ -58,7 +58,6 @@ export const SignUp = () => {
     <div className="flex flex-row justify-center m-4">
       <div className="w-96">
         <Paper>
-          <div>First Name</div>
           <Input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           <div>Last Name</div>
           <Input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
