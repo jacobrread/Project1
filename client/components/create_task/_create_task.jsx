@@ -11,12 +11,12 @@ export const CreateTask = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [timeEstimate, setTimeEstimate] = useState('');
+  const [parentProjectId, setParentProjectId] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [, setAuthToken] = useContext(AuthContext);
   const api = useContext(ApiContext);
   const navigate = useNavigate();
 
-  const signUp = async () => {
+  const createTask = async () => {
     if (title === '') {
       setErrorMessage('Name cannot be blank');
       return;
@@ -30,12 +30,15 @@ export const CreateTask = () => {
       return;
     }
 
-    const { token } = await api.post('/projects', {
+    // setParentProjectId(props.location.state.parentProjectId);
+
+    await api.post('/tasks', {
       timeEstimate,
       description,
       title,
+      // how do we send in the parentProjectId? 
+      // Do we get the parenProjectId from projects.jsx? If so, how?
     });
-    setAuthToken(token);
     navigate('/');
   };
 
@@ -49,7 +52,7 @@ export const CreateTask = () => {
         <div>Enter Time Estimate</div>
         <Input type="text" value={timeEstimate} onChange={(e) => setTimeEstimate(e.target.value)} />
         <div className="flex flex-row justify-end mt-2">
-          <Button type="button" onClick={signUp}>
+          <Button type="button" onClick={createTask}>
             Create Task
           </Button>
         </div>
@@ -58,3 +61,7 @@ export const CreateTask = () => {
     </>
   );
 };
+
+// TODO:
+// the post for tasks has Body for a parameter. Is that what is passed in via the post method (line 33)
+// If so, do we need to pass in the rest of the fields in lines 41-46 of tasks.controller?

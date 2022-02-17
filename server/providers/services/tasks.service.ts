@@ -16,7 +16,7 @@ export class TasksService {
     });
   }
 
-  createProject(task: Task): Promise<Task> {
+  createTask(task: Task): Promise<Task> {
     return this.taskRepository.save(task);
   }
 

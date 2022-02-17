@@ -58,35 +58,7 @@ export const Home = () => {
         <Projects projects={projects} />
       </div>
 
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
-      <div>ask;jfhaskjhf a;sjhfa;s jhjfa;lskdhjfl ajshf ajks;fa jslka sljk hfas khas hal</div>
+ 
     </>
   );
 };

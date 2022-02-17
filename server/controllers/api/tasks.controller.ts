@@ -18,7 +18,7 @@ class TaskPostBody {
 export class TasksController {
   constructor(private tasksService: TasksService, private userprojectsService: userProjectsService) {}
 
-  @Get('/tasks/') // lists all tasks
+  @Get('/tasks') // lists all tasks
   public async index(@JwtBody() jwtBody: JwtBodyDto) {
     const users = await this.tasksService.findAllForUser(jwtBody.userId);
     jwtBody.userId;
@@ -41,13 +41,13 @@ export class TasksController {
       task.title = body.title;
       task.description = body.description;
       task.timeEstimate = body.timeEstimate;
-      task.status = body.status;
-      task.assignedUser = body.assignedUser;
+      task.status = false;
+      task.assignedUser = null;
       task.parentProjectId = body.parentProjectId;
-      task = await this.tasksService.createProject(task);
+      task = await this.tasksService.createTask(task);
       return { task };
     }
-    throw new HttpException('Unauthorized', 401);
+    throw new HttpException('Error creating a task', 401);
   }
 
   @Put('/tasks/:id') // update the state of the task
