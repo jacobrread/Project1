@@ -42,7 +42,7 @@ export class TasksController {
       task.description = body.description;
       task.timeEstimate = body.timeEstimate;
       task.status = false;
-      task.assignedUser = null;
+      task.assignedUser = jwtBody.userId;
       task.parentProjectId = body.parentProjectId;
       task = await this.tasksService.createTask(task);
       return { task };
