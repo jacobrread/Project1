@@ -22,6 +22,12 @@ export class userProjectsService {
     });
   }
 
+  findProjectForUser(userId: number, projectId: number): Promise<UserProject> {
+    return this.userProjectRepository.findOne({
+      where: { projectId,userId },
+    });
+  }
+
   /**
    * TODO
    */

@@ -33,10 +33,10 @@ export class TasksController {
 
   @Post('/tasks') // create new tasks
   public async create(@JwtBody() jwtBody: JwtBodyDto, @Body() body: TaskPostBody) {
-    const projects = await this.userprojectsService.findAllProjects(jwtBody.userId);
+    const project = await this.userprojectsService.findProjectForUser(jwtBody.userId,body.parentProjectId);
 
     // check to see if the current user is part of the current project
-    if (body.parentProjectId in projects) {
+    if (project != null) {
       let task = new Task();
       task.title = body.title;
       task.description = body.description;

@@ -6,6 +6,7 @@
 
 div {
   margin: 10;
+  padding: 10;
 }
 
 .top-bar {
@@ -24,4 +25,8 @@ div {
 
 .spacer {
   padding: 60px;
+}
+
+.box{
+  border: thin solid black;
 }

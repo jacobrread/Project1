@@ -9,6 +9,9 @@ import { UsersService } from 'server/providers/services/users.service';
 class ProjectPostBody {
   name:string;
 }
+class InviteBody {
+  email:string;
+}
 
 @Controller()
 export class ProjectsController {
@@ -50,16 +53,16 @@ export class ProjectsController {
   }
 
   @Post('/projects/:id/invite') // invite others to project
-  public async invite(@Param('id') id: string, @Param('invite') invite: string) {
-    const isUserPresent = await this.userService.findAll([invite]);
-    if (isUserPresent != null) {
-      const userIdToAdd = isUserPresent[0].id;
+  public async invite(@Param('id') id: string, @Body() body: InviteBody) {
+    const user = await this.userService.findBy({ email: body.email });
+    if (user != null) {
       const newUserProject = new UserProject();
       newUserProject.projectId = parseInt(id, 10);
-      newUserProject.userId = userIdToAdd;
+      newUserProject.userId = user.id;
       await this.projectsService.createRelation(newUserProject);
+      return {user}
     } else {
-      throw new HttpException('User does not exist', 401);
+      throw new HttpException('User does not exist', 404);
     }
   }
 }

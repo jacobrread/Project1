@@ -6,7 +6,6 @@ import { Input } from '../common/input';
 
 
 export const Projects = ({ projects }) => {
-  // const [email, setEmail] = useState(null);
   const navigate = useNavigate();
 
   const goToProject = () => {
@@ -17,9 +16,16 @@ export const Projects = ({ projects }) => {
       navigate(`/createtask/${id}`);
     };
 
-  const invite = () => {    
-      navigate('/createinvite');
+  const invite = (id) => {    
+      navigate(`/createinvite/${id}`);
   }
+
+const [buttonText, setButtonText] = useState("Not done");
+
+const changeText = (text) => setButtonText(text);
+
+
+
 
   // for testing purposes
   console.log(projects);
@@ -35,12 +41,18 @@ export const Projects = ({ projects }) => {
             {project.name}
             <div>
               <Button onClick={() => goToTask(project.id)}>Create Task</Button>
-              <Button onClick={() => invite()}>Invite Member</Button>
+              <Button onClick={() => invite(project.id)}>Invite Member</Button>
             </div>
             <div> 
               {project.tasks.map((task)=>(
-                <div>
+                <div className = "box">
                   <p>Title: {task.title}</p>
+                  <p>Discription: {task.description}</p>
+                  <p>Time Est: {task.timeEstimate}</p>
+                  <div>
+                  <p>Status: </p>
+                  <Button onClick={() => setButtonText("Done")}>{buttonText}</Button>
+                    </div>
                 </div>
               ))} 
 

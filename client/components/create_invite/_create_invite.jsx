@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../../utils/auth_context';
 import { ApiContext } from '../../utils/api_context';
 import { Paper } from '../common/paper';
@@ -13,36 +13,19 @@ export const CreateInvite = () => {
   const [users, setUsers] = useState([]);
   const api = useContext(ApiContext);
   const navigate = useNavigate();
+  const{id} = useParams();
 
   const sendInvite = async () => {
     if (email === '') {
       setErrorMessage('Email cannot be blank');
       return;
     }
-    console.log("before")
-    const userTable =  await api.get('/');
-    setUsers(userTable);
-
-    console.log("got here");
-    console.log(users);
-
-    navigate('/');
-
-    // for(user in users){
-    //   console.log(user.email);
-    //   if(user.email == email){
-    //     const res = await api.post(`/projects/${id}/invite`, {
-    //       id, 
-    //       email,
-    //     }); 
-    //     if (res.success) {
-    //       setAuthToken(null);
-    //       navigate('/');
-    //     }
-    //   }
-    // }
-    // setErrorMessage('email does not match a user. Try again');
-    // return;
+    
+        const res = await api.post(`/projects/${id}/invite`, {
+          id, 
+          email,
+        }); 
+        navigate('/');
   };
 
   return (

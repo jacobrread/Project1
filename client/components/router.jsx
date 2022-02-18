@@ -25,7 +25,7 @@ export const Router = () => {
         <Route path="signup" element={<SignUp />} />
         <Route path="createproject" element={<CreateProject />} />
         <Route path="createtask/:id" element={<CreateTask />} />   
-        <Route path="createinvite" element={<CreateInvite />} />
+        <Route path="createinvite/:id" element={<CreateInvite />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </>
