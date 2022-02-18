@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Project } from './project.entity';
 
 @Entity()
@@ -25,5 +25,6 @@ export class Task {
   parentProjectId: number;
 
   @ManyToOne(() => Project, (project) => project.tasks)
+  @JoinColumn({name:'parentProjectId'})
   project: Project;
 }

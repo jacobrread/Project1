@@ -19,7 +19,7 @@ export const CreateProject = () => {
       return;
     }
 
-      await api.post('/projects', {
+    await api.post('/projects', {
       name,
     });
     navigate('/');

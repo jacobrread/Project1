@@ -16,7 +16,7 @@ export class ProjectsService {
   async findAllForUser(userId: number): Promise<Project[]> {
     const userProjects = await this.userProjectRepository.find({
       where: { userId },
-      relations: ['project'],
+      relations: ['project','project.tasks','project.userProjects','project.userProjects.user'],
     });
     return userProjects.map((userProject) => userProject.project);
   }

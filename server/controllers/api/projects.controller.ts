@@ -50,7 +50,7 @@ export class ProjectsController {
   }
 
   @Post('/projects/:id/invite') // invite others to project
-  public async invite(@Param('id') id: string, @JwtBody() jwtBody: JwtBodyDto, @Param('invite') invite: string) {
+  public async invite(@Param('id') id: string, @Param('invite') invite: string) {
     const isUserPresent = await this.userService.findAll([invite]);
     if (isUserPresent != null) {
       const userIdToAdd = isUserPresent[0].id;

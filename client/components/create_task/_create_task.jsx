@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../../utils/auth_context';
 import { ApiContext } from '../../utils/api_context';
 import { Paper } from '../common/paper';
@@ -16,6 +16,8 @@ export const CreateTask = () => {
   const api = useContext(ApiContext);
   const navigate = useNavigate();
 
+  const{id} = useParams();
+
   const createTask = async () => {
     if (title === '') {
       setErrorMessage('Name cannot be blank');
@@ -30,12 +32,11 @@ export const CreateTask = () => {
       return;
     }
 
-    // setParentProjectId(props.location.state.parentProjectId);
-
     await api.post('/tasks', {
       timeEstimate,
       description,
       title,
+      parentProjectId: id,
       // how do we send in the parentProjectId? 
       // Do we get the parenProjectId from projects.jsx? If so, how?
     });
