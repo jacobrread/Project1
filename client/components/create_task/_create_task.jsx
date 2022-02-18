@@ -37,8 +37,6 @@ export const CreateTask = () => {
       description,
       title,
       parentProjectId: id,
-      // how do we send in the parentProjectId? 
-      // Do we get the parenProjectId from projects.jsx? If so, how?
     });
     navigate('/');
   };
