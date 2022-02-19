@@ -3,7 +3,7 @@ import { Button } from '../common/button';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Input } from '../common/input';
-
+import { Tasks } from './tasks';
 
 export const Projects = ({ projects }) => {
   const navigate = useNavigate();
@@ -20,15 +20,9 @@ export const Projects = ({ projects }) => {
       navigate(`/createinvite/${id}`);
   }
 
-const [buttonText, setButtonText] = useState("Not done");
+  const [buttonText, setButtonText] = useState("Not done");
 
-const changeText = (text) => setButtonText(text);
-
-
-
-
-  // for testing purposes
-  console.log(projects);
+  const changeText = (text) => setButtonText(text);
   
   return (
     <>
@@ -43,20 +37,7 @@ const changeText = (text) => setButtonText(text);
               <Button onClick={() => goToTask(project.id)}>Create Task</Button>
               <Button onClick={() => invite(project.id)}>Invite Member</Button>
             </div>
-            <div> 
-              {project.tasks.map((task)=>(
-                <div className = "box">
-                  <p>Title: {task.title}</p>
-                  <p>Discription: {task.description}</p>
-                  <p>Time Est: {task.timeEstimate}</p>
-                  <div>
-                  <p>Status: </p>
-                  <Button onClick={() => setButtonText("Done")}>{buttonText}</Button>
-                    </div>
-                </div>
-              ))} 
-
-            </div>
+            <Tasks project={project} />
           </div>
         ))}
       </div>

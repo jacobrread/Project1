@@ -1,31 +1,33 @@
 import { Project } from './project';
 import { Button } from '../common/button';
 import { useNavigate } from 'react-router';
+import { ApiContext } from '../../utils/api_context';
+import { useContext, useState}  from 'react';
+import { ApiContext } from '../../utils/api_context';
+import { Task } from './task';
 
-export const Projects = ({ projects }) => {
+
+export const Tasks = ({ project }) => {
   const navigate = useNavigate();
-  const routeChange = () => {
-    navigate('/createproject');
-  };
+  const [buttonText, setButtonText] = useState("Incomplete");
+  const api = useContext(ApiContext);
 
+  const updateStatus = async (task) => {
+    task.status = await api.put(`/tasks/${task.id}`);
+  
+    if(task.status) {
+      setButtonText("Completed");
+    } else{
+      setButtonText("Incomplete");
+    }
+  };
 
   return (
     <>
-      <div>
-        <Button onClick={routeChange}>Click to create new project</Button>
-      </div>
-      <div className="flex-1">
-        {projects.map((project) => (
-          <div key={project.id} className="border-2 rounded p-4">
-            {project.name}
-            <div>
-              <Button onClick={() => deleteNote(note)}>Create Task</Button>
-            </div>
-            <div>
-              <Button onClick={() => deleteNote(note)}>Invite Member</Button>
-            </div>
-          </div>
-        ))}
+      <div> 
+        {project.tasks.map((task)=>(
+          <Task task={task} />
+        ))} 
       </div>
     </>
   );

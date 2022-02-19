@@ -6,7 +6,7 @@ import { Paper } from '../common/paper';
 import { Input } from '../common/input';
 import { Button } from '../common/button';
 
-export const CreateInvite = () => {
+export const AssignUser = () => {
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [, setAuthToken] = useContext(AuthContext);
@@ -15,13 +15,13 @@ export const CreateInvite = () => {
   const navigate = useNavigate();
   const{id} = useParams();
 
-  const sendInvite = async () => {
+  const assign = async () => {
     if (email === '') {
       setErrorMessage('Email cannot be blank');
       return;
     }
     
-    await api.post(`/projects/${id}/invite`, {
+    const res = await api.post(`/projects/${id}/invite`, {
       id, 
       email,
     }); 
@@ -31,10 +31,10 @@ export const CreateInvite = () => {
   return (
     <>
       <Paper>
-        <div>Enter Team Members Email</div>
+        <div>Enter Project Members Email That You Want to Assign This Task</div>
         <Input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         <div className="flex flex-row justify-end mt-2">
-          <Button type="button" onClick={sendInvite}>
+          <Button type="button" onClick={assign}>
             Send Invite
           </Button>
         </div>

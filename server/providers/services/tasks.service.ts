@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from 'server/entities/task.entity';
 import { Repository } from 'typeorm';
@@ -25,7 +25,8 @@ export class TasksService {
   }
 
   async updateBool(id: number) {
-    const task = await this.taskRepository.findOne(id);
-    task.status = !task.status;
+    console.log("got here");
+    var task = await this.taskRepository.findOne(id);
+    return task.status = !task.status;
   }
 }

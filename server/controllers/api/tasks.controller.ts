@@ -1,7 +1,9 @@
 import { Body, Controller, Get, HttpException, Param, Post, Put } from '@nestjs/common';
 import { JwtBody } from 'server/decorators/jwt_body.decorator';
 import { JwtBodyDto } from 'server/dto/jwt_body.dto';
+import { Project } from 'server/entities/project.entity';
 import { Task } from 'server/entities/task.entity';
+import { UserProject } from 'server/entities/userProject.entity';
 import { TasksService } from 'server/providers/services/tasks.service';
 import { userProjectsService } from 'server/providers/services/userProjects.service';
 
@@ -52,12 +54,8 @@ export class TasksController {
 
   @Put('/tasks/:id') // update the state of the task
   public async update(@Param('id') id: string, @Body() body: TaskPostBody, @JwtBody() jwtBody: JwtBodyDto) {
-    const task = await this.tasksService.findTaskById(parseInt(id, 10));
-    const projects = await this.userprojectsService.findAllProjects(jwtBody.userId);
-
-    // check to make sure the user is part of the current project
-    if (body.parentProjectId in projects) {
-      task.status = !task.status;
-    }
+        const task = await this.tasksService.findTaskById(parseInt(id, 10));
+        task.status = !task.status;
+        return {task};
   }
 }
