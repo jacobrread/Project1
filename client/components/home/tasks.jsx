@@ -1,5 +1,3 @@
-import { Project } from './project';
-import { Button } from '../common/button';
 import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { useContext, useState}  from 'react';
@@ -8,7 +6,6 @@ import { Task } from './task';
 
 
 export const Tasks = ({ project }) => {
-  const navigate = useNavigate();
   const [buttonText, setButtonText] = useState("Incomplete");
   const api = useContext(ApiContext);
 

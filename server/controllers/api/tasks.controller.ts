@@ -53,9 +53,14 @@ export class TasksController {
   }
 
   @Put('/tasks/:id') // update the state of the task
-  public async update(@Param('id') id: string, @Body() body: TaskPostBody, @JwtBody() jwtBody: JwtBodyDto) {
-        const task = await this.tasksService.findTaskById(parseInt(id, 10));
-        task.status = !task.status;
-        return {task};
+  public async update(@Param('id') id: string) {
+    var task = await this.tasksService.updateBool(parseInt(id, 10));
+    return { task };
+  }
+
+  @Put('/tasks/assignuser/:id') // update the state of the task
+  public async assignUser(@Param('id') projectId: string, @JwtBody() jwtBody: JwtBodyDto) {
+    var task = await this.tasksService.updateUser(parseInt(projectId, 10), jwtBody.userId);
+    return { task };
   }
 }

@@ -1,18 +1,20 @@
 import { Button } from '../common/button';
 import { useContext, useState}  from 'react';
-import { Project } from './project';
 import { Button } from '../common/button';
-import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { useContext, useState}  from 'react';
 import { ApiContext } from '../../utils/api_context';
+import { useNavigate } from 'react-router';
+
 
 
 export const Task = ({ task }) => {
   const api = useContext(ApiContext);
   const [buttonText, setButtonText] = useState('change me');
+  const navigate = useNavigate();
 
-  const getStatus = () => {
+
+  const setMessage = () => {
     if(task.status) {
       setButtonText("Completed");
     } else{
@@ -21,19 +23,22 @@ export const Task = ({ task }) => {
   }
 
   const updateStatus = async (task) => {
-    task.status = await api.put(`/tasks/${task.id}`);
-
-    const routeChange = () => {
-      navigate('/createproject');
-    };
-    
-    console.log(task.status);
-    
-    getStatus();
+    await api.put(`/tasks/${task.id}`);
+    setMessage();
   }
+
+  const getUser = async () =>{
+    // todo make this get the user name of the assigned user.
+  }
+
+  const assignUser = (id) => {    
+    navigate(`/assignuser`);
+}
 
   return (
     <div className = "box">
+      <Button onClick={() => assignUser(task.parentProjectId)}>Assign User</Button>
+      <p>User Assigned: {task.assignUser}</p>
       <p>Title: {task.title}</p>
       <p>Discription: {task.description}</p>
       <p>Time Est: {task.timeEstimate}</p>
@@ -43,3 +48,5 @@ export const Task = ({ task }) => {
     </div>
   );
 }
+
+// TODO: figure out how to display the user's name on line 41

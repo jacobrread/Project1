@@ -21,9 +21,8 @@ export const AssignUser = () => {
       return;
     }
     
-    const res = await api.post(`/projects/${id}/invite`, {
+    await api.put(`/projects/assignuser/${id}`, {
       id, 
-      email,
     }); 
     navigate('/');
   };
@@ -31,7 +30,7 @@ export const AssignUser = () => {
   return (
     <>
       <Paper>
-        <div>Enter Project Members Email That You Want to Assign This Task</div>
+        <div>Enter Project Members Name That You Want to Assign This Task</div>
         <Input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         <div className="flex flex-row justify-end mt-2">
           <Button type="button" onClick={assign}>
@@ -43,3 +42,6 @@ export const AssignUser = () => {
     </>
   );
 };
+
+// TODO: 
+// Does the assignuser functionality work? -> does teh controller and service work too?

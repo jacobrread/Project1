@@ -51,14 +51,11 @@ export const Home = () => {
           )}
         </div>
       </div>
-
       <div className="spacer"></div>
       <div classname="rounded project">
         <h1>Here are a list of your projects:</h1>
         <Projects projects={projects} />
       </div>
-
- 
     </>
   );
 };

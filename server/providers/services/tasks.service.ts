@@ -25,8 +25,18 @@ export class TasksService {
   }
 
   async updateBool(id: number) {
-    console.log("got here");
     var task = await this.taskRepository.findOne(id);
-    return task.status = !task.status;
+    task.status = !task.status;
+    console.log(task.status);
+    console.log('jared');
+    this.taskRepository.save(task); 
+    console.log('saved')   
   }
+
+  async updateUser(taskId: number, userId: number) {
+    var task = await this.taskRepository.findOne(taskId);
+    task.assignedUser = userId;
+    this.taskRepository.save(task);
+  }
+
 }
