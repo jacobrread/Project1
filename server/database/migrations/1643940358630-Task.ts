@@ -27,7 +27,7 @@ export class Task1643940358630 implements MigrationInterface {
           },
           {
             name: 'status',
-            type: 'bool',
+            type: 'text',
             isNullable: false,
           },
           {

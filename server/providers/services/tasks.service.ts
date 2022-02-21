@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { take } from 'lodash';
 import { Task } from 'server/entities/task.entity';
 import { Repository } from 'typeorm';
 
@@ -24,9 +25,13 @@ export class TasksService {
     return this.taskRepository.findOne(id);
   }
 
-  async updateBool(id: number) {
+  async updateStatus(id: number) {
     var task = await this.taskRepository.findOne(id);
-    task.status = !task.status;
+    if(task.status == 'Incomplete'){
+      task.status = 'Completed'
+    } else{
+      task.status = 'Incomplete'
+    }
     console.log(task.status);
     console.log('jared');
     this.taskRepository.save(task); 

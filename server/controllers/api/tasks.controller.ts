@@ -43,7 +43,7 @@ export class TasksController {
       task.title = body.title;
       task.description = body.description;
       task.timeEstimate = body.timeEstimate;
-      task.status = false;
+      task.status = 'Incomplete';
       task.assignedUser = jwtBody.userId;
       task.parentProjectId = body.parentProjectId;
       task = await this.tasksService.createTask(task);
@@ -54,7 +54,7 @@ export class TasksController {
 
   @Put('/tasks/:id') // update the state of the task
   public async update(@Param('id') id: string) {
-    var task = await this.tasksService.updateBool(parseInt(id, 10));
+    var task = await this.tasksService.updateStatus(parseInt(id, 10));
     return { task };
   }
 

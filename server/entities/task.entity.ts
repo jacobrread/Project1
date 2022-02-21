@@ -16,7 +16,7 @@ export class Task {
   timeEstimate: number;
 
   @Column()
-  status: boolean;
+  status: string;
 
   @Column()
   assignedUser: number;
